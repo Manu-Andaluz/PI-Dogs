@@ -1,0 +1,19 @@
+.background-image {
+    background-image: url('/public/sleepy-dog.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 90vh;
+}
+
+.front-cover {
+    display: flex;
+    width: 30%;
+    padding-top: 10rem;
+    padding-left: 1.5rem;
+}
+
+h1 {
+    color: white;
+    font-size: 3rem;
+}

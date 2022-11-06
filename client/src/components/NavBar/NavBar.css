@@ -1,0 +1,28 @@
+nav {
+    display: flex;
+    padding: 1rem 2rem;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 10vh;
+}
+
+.logo p {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: rgb(248, 173, 33);
+}
+
+ul {
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}

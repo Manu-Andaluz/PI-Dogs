@@ -3,10 +3,15 @@ const { Router } = require('express');
 // Ejemplo: const authRouter = require('./auth.js');
 
 
-const router = Router();
+const app = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
+app.get('/home', (req, res) => {
+    res.send('hola')
+    console.log('hola')
+})
 
-module.exports = router;
+
+module.exports = app;
