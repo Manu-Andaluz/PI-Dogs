@@ -10,7 +10,8 @@ module.exports = (sequelize) => {
     },
     id: {
       type: DataTypes.UUID,
-      allowNull: false
+      allowNull: false,
+      primaryKey: true
     },
     height: {
       type: DataTypes.INTEGER,
@@ -23,7 +24,7 @@ module.exports = (sequelize) => {
     yearsOfLife: {
       type: DataTypes.INTEGER,
     }
-  });
+  }, { timestamps: false });
 };
 
 /*
