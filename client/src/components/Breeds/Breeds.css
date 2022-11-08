@@ -1,0 +1,23 @@
+.container {
+    display: grid;
+    gap: 1rem;
+}
+
+form {
+    padding-top: 3rem;
+    margin: 0 auto;
+}
+
+
+form input {
+    padding: 1rem;
+    border: solid 1px rgb(204, 204, 204);
+}
+
+.container-grid {
+    display: grid;
+    gap: 3rem;
+    grid-template-columns: repeat(auto-fit,
+            minmax(250px, 1fr));
+    padding: 2rem;
+}

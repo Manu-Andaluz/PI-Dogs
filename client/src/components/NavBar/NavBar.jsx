@@ -1,8 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./NavBar.css";
 
 export default function NavBar() {
+  let activeStyle = {
+    borderBottom: "1px solid black",
+    paddingBottom: "5px",
+  };
   return (
     <nav>
       <div className="logo">
@@ -11,16 +15,36 @@ export default function NavBar() {
 
       <ul>
         <li>
-          <Link to="/home">Home</Link>
+          <NavLink
+            to="/home"
+            style={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
+            Home
+          </NavLink>
         </li>
         <li>
-          <Link to="/breeds">Breeds</Link>
+          <NavLink
+            to="/breeds"
+            style={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
+            Breeds
+          </NavLink>
         </li>
         <li>
-          <Link to="/createBread">Create Breed</Link>
+          <NavLink
+            to="/createBread"
+            style={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
+            Create Breed
+          </NavLink>
         </li>
         <li>
-          <Link to="/aboutUs">About us</Link>
+          <NavLink
+            to="/aboutUs"
+            style={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
+            Your Breed
+          </NavLink>
         </li>
       </ul>
     </nav>

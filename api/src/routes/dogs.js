@@ -13,8 +13,9 @@ app.get('/', async (req, res) => {
             const breedNames = allData.filter(a => a.name.toLowerCase().includes(name.toLowerCase())) // me traigo todo lo que coincida
             breedNames.length > 0
                 ? res.send(breedNames)
-                    : res.status(404).send('No existe esa raza')
-                    
+                : res.status(404).send('No existe esa raza')
+
+        } else {
             res.send(allData)
         }
     } catch (err) {
