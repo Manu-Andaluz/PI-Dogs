@@ -66,32 +66,69 @@ app.get('/dogs', async (req, res) => {
 })
 
 app.get('/dogs/:breedId', async (req, res) => {
+    const { breedId } = req.params
 
+    try {
+
+        const allData = await getAllData()
+        const breed = await allData.find(data => data.id == breedId)
+
+        breed ? res.send(breed) : res.send('not found')
+
+    } catch (err) {
+        res.status(400).send(err)
+    }
 })
 
 app.get('/temperaments', async (req, res) => {
-    const apiUrl = await axios.get('https://api.thedogapi.com/v1/breeds')
-    let allData = apiUrl.data.map(data => data.temperament).join('').split(', ')
-    allData = [...new Set(allData)];
+    try {
 
-    for (let item of allData) {
-        await Temperament.findOrCreate({ where: { name: item } })
+        const apiUrl = await axios.get('https://api.thedogapi.com/v1/breeds')
+        let allData = apiUrl.data.map(data => data.temperament).join('').split(', ')
+        allData = [...new Set(allData)];
+
+        for (let item of allData) {
+            await Temperament.findOrCreate({ where: { name: item } })
+        }
+
+        const allTemperaments = await Temperament.findAll()
+
+        res.send(allTemperaments)
+
+    } catch (err) {
+        res.status(400).send(err)
     }
-
-    const allTemperaments = await Temperament.findAll()
-
-    res.send(allTemperaments)
 })
 
 app.post('/', async (req, res) => {
+    const { name, height, weight, yearsOfLife, temperament } = req.body
 
+    try {
+
+        const found = await getAllData().map(element => element.name === name)
+
+        if (found.length > 0) return res.status(400).send('The breed is already exist')
+
+        const newBread = await Breed.create({ name, height, weight, yearsOfLife })
+
+        const newTemperament = await Temperament.findAll({ where: { name: temperament } })
+
+        newBread.addTemperament(newTemperament)
+
+        const created = await Breed.findAll({ where: { name: name } })
+
+        if (created) {
+            res.status(201).send('Breed created', created)
+        } else {
+            res.status(404).send('Something go wrong')
+        }
+
+    } catch (err) {
+        res.status(400).send(err)
+    }
 })
 
 /*
- GET /dogs:
-Obtener un listado de las razas de perro
-Debe devolver solo los datos necesarios para la ruta principal
-
  GET /dogs?name="...":
 Obtener un listado de las razas de perro que contengan la palabra ingresada como query parameter
 Si no existe ninguna raza de perro mostrar un mensaje adecuado
