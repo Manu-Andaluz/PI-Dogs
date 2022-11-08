@@ -101,27 +101,32 @@ app.get('/temperaments', async (req, res) => {
 })
 
 app.post('/', async (req, res) => {
-    const { name, height, weight, yearsOfLife, temperament } = req.body
+    const { name, minHeight, maxHeight, minWeight, maxWeight, minYearsLife, maxYearsLife, temperament, image } = req.body
 
     try {
 
-        const found = await getAllData().map(element => element.name === name)
-
-        if (found.length > 0) return res.status(400).send('The breed is already exist')
-
-        const newBread = await Breed.create({ name, height, weight, yearsOfLife })
-
-        const newTemperament = await Temperament.findAll({ where: { name: temperament } })
-
-        newBread.addTemperament(newTemperament)
-
-        const created = await Breed.findAll({ where: { name: name } })
-
-        if (created) {
-            res.status(201).send('Breed created', created)
-        } else {
-            res.status(404).send('Something go wrong')
+        const allData = await getAllData()
+        const found = allData.find(e => e.name.toLowerCase() === name.toLowerCase())
+        if (found) {
+            return res.status(400).send('Already Exist')
         }
+
+        const newBread = await Breed.create({
+            name: name[0].toUpperCase() + name.slice(1),
+            height: `${minHeight} - ${maxHeight}`,
+            weight: `${minWeight} - ${maxWeight}`,
+            yearsOfLife: `${minYearsLife} - ${maxYearsLife}`,
+            image: image ? image : null
+        })
+
+        await temperament.forEach(async element => {
+            const newTemperament = await Temperament.findAll({ where: { name: element } })
+            await newBread.addTemperament(newTemperament[0])
+        })
+
+        await Breed.findAll({ where: { name: name } })
+
+        res.status(201).send('Breed created')
 
     } catch (err) {
         res.status(400).send(err)
