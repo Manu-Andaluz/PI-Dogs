@@ -1,5 +1,3 @@
-// cambiar
-
 export function getBreeds() {
     return function (dispatch) {
         return fetch('http://localhost:3001/dogs')
@@ -15,3 +13,5 @@ export function getBreedsDetail(id) {
             .then(res => dispatch({ type: 'GET_BREEDS_DETAIL', payload: res }))
     }
 }
+
+export function getNextPage() { }
