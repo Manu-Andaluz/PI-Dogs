@@ -6,6 +6,14 @@ export function getBreeds() {
     }
 }
 
+export function searchBreed(name) {
+    return function (dispatch) {
+        return fetch(`http://localhost:3001/dogs?name=${name}`)
+            .then(res_json => res_json.json())
+            .then(res => dispatch({ type: 'SEARCH_BREED', payload: res }))
+    }
+}
+
 export function getBreedsDetail(id) {
     return function (dispatch) {
         return fetch(`http://localhost:3001/dogs/${id}`)
@@ -13,5 +21,3 @@ export function getBreedsDetail(id) {
             .then(res => dispatch({ type: 'GET_BREEDS_DETAIL', payload: res }))
     }
 }
-
-export function getNextPage() { }

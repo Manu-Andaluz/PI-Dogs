@@ -11,6 +11,11 @@ export default function rootReducer(state = initialState, action) {
             breed: [...action.payload]
         }
 
+        case 'SEARCH_BREED': return {
+            ...state,
+            breed: action.payload
+        }
+
         case 'GET_BREEDS_DETAIL': return {
             ...state,
             movieDetail: action.payload

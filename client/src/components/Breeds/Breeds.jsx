@@ -5,12 +5,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { getBreeds } from "../../redux/actions/actions";
 import BreedCard from "../BreedCard/BreedCard";
 import { useState } from "react";
-// import { getBreeds } from "../../actions/index";
+import SearchForm from "../SearchForm/SearchForm";
 
 export default function Breeds() {
   const state = useSelector((state) => state.breed);
   const [numberBreeds, setNumberBreeds] = useState(16);
-  let breeds = state.slice(0, numberBreeds);
+  let breeds = state.length > 16 ? state.slice(0, numberBreeds) : state;
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,9 +23,7 @@ export default function Breeds() {
 
   return (
     <div className="container">
-      <form action="">
-        <input type="text" placeholder="Search Breed ..." />
-      </form>
+      <SearchForm />
       <div className="container-grid">
         {breeds &&
           breeds.map((element) => {
