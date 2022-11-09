@@ -40,7 +40,7 @@ app.get('/:breedId', async (req, res) => {
 })
 
 app.post('/', async (req, res) => {
-    const { name, minHeight, maxHeight, minWeight, maxWeight, minYearsLife, maxYearsLife, temperament, image } = req.body
+    const { name, minHeight, maxHeight, minWeight, maxWeight, minYearsLife, maxYearsLife, temperaments, image } = req.body
 
     try {
 
@@ -58,7 +58,7 @@ app.post('/', async (req, res) => {
             image: image ? image : null
         })
 
-        await temperament.forEach(async element => {
+        await temperaments.split(' ').forEach(async element => {
             const newTemperament = await Temperament.findAll({ where: { name: element } })
             await newBread.addTemperament(newTemperament)
         })

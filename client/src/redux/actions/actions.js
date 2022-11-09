@@ -24,10 +24,10 @@ export function getBreedsDetail(id) {
     }
 }
 
-export function createBreed({ name, minHeight, maxHeight, minWeight, maxWeight, minYearsLife, maxYearsLife, temperament, image }) {
+export function createBreed({ name, minHeight, maxHeight, minWeight, maxWeight, minYearsLife, maxYearsLife, temperaments, image }) {
     return function (dispatch) {
         try {
-            const newBreed = { name, minHeight, maxHeight, minWeight, maxWeight, minYearsLife, maxYearsLife, temperament, image }
+            const newBreed = { name, minHeight, maxHeight, minWeight, maxWeight, minYearsLife, maxYearsLife, temperaments, image }
 
             fetch('http://localhost:3001/dogs', {  // Enter your IP address here
                 method: 'POST',
