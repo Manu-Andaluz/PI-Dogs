@@ -18,12 +18,11 @@ export default function rootReducer(state = initialState, action) {
 
         case 'GET_BREEDS_DETAIL': return {
             ...state,
-            movieDetail: action.payload
+            breedDetail: action.payload
         }
 
         case 'CREATE_BREED': return {
-            ...state,
-            moviesFavorites: [...state.moviesFavorites, action.payload]
+            ...state
         }
 
         default: return state

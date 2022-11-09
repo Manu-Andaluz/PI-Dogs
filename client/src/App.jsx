@@ -6,6 +6,7 @@ import Breeds from "./components/Breeds/Breeds";
 import { Provider } from "react-redux";
 import store from "./redux/store/index";
 import CreateBreed from "./components/CreateBreed/CreateBreed";
+import BreedDetails from "./components/BreedDetails/BreedDetails";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route exact path="/home" element={<FrontPage />} />
         <Route exact path="/breeds" element={<Breeds />} />
         <Route exact path="/createBread" element={<CreateBreed />} />
+        <Route exact path="/breedDetails/:id" element={<BreedDetails />} />
       </Routes>
     </Provider>
   );

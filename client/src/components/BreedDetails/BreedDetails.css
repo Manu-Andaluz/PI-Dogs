@@ -1,0 +1,22 @@
+.container-details {
+    display: flex;
+    gap: 1rem;
+    place-content: center;
+    align-items: center;
+    margin: 3rem;
+}
+
+.container-details img {
+    max-width: 50%;
+}
+
+.detail-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.detail-list span {
+    font-size: 1.1rem;
+    color: black;
+    font-weight: 600;
+}

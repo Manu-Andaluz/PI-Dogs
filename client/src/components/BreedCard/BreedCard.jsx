@@ -1,16 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./BreedCard.css";
 export default function BreedCard({ name, image, id }) {
   return (
-    <a
-      className="container-card"
-      href={`http://localhost:3001/dogs/${id}`}
-      key={id}
-    >
+    <Link className="container-card" to={`/breedDetails/${id}`} key={id}>
       <img src={image} alt="breed dog" />
       <div className="details">
         <h4>{name}</h4>
       </div>
-    </a>
+    </Link>
   );
 }

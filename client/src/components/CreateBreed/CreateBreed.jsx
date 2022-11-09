@@ -1,93 +1,127 @@
 import React from "react";
 import { useState } from "react";
-import validate from "../validate/validate";
+//import validate from "../validate/validate";
 import "./CreateBreed.css";
 import dogForm from "./images/dogForm.jpg";
-// /public/sleepy-dog.jpg
+import { useDispatch } from "react-redux";
+import { createBreed } from "../../redux/actions/actions";
+
 export default function CreateBreed() {
+  const dispatch = useDispatch();
+
   const [input, setInput] = useState({
     name: "",
-    weight: "",
-    height: "",
-    yearsOfLife: "",
+    minWeight: Number,
+    maxWeight: Number,
+    minHeight: Number,
+    maxHeight: Number,
+    minYearsLife: "",
+    maxYearsLife: "",
     temperament: "",
     image: "",
   });
-
-  const [error, setError] = useState({});
 
   const handleChange = (e) => {
     setInput({
       ...input,
       [e.target.name]: e.target.value,
     });
-    setError(
-      validate({
-        ...input,
-        [e.target.name]: e.target.value,
-      })
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(createBreed(input));
+    Array.from(document.querySelectorAll("input")).forEach(
+      (input) => (input.value = "")
     );
   };
 
   return (
     <div className="create-breed-container">
       <img src={dogForm} className="dog-img " alt="nose" />
-      <form className="create-breed-form" action="">
+      <form className="create-breed-form" onSubmit={handleSubmit}>
         <h3>Create a New Breed !!</h3>
         <input
           type="text"
           placeholder="Name ..."
-          value={input[input.name]}
+          name="name"
+          value={input[input.value]}
           onChange={handleChange}
-          className={error[`${input.name}`] && "danger"}
           required
         />
-        <p className="danger">{error.name}</p>
         <div className="flex">
           <input
             type="text"
-            placeholder="Weight ..."
-            value={input[input.weight]}
+            placeholder="Min Weight ..."
+            name="minWeight"
+            value={input[input.value]}
             onChange={handleChange}
-            className={error.weight && "danger"}
             required
           />
-          <p className="danger">{error.weight}</p>
+          <p>-</p>
           <input
             type="text"
-            placeholder="Height ..."
-            value={input[input.height]}
+            placeholder="Max Weight ..."
+            name="maxWeight"
+            value={input[input.value]}
             onChange={handleChange}
-            className={error.height && "danger"}
             required
           />
-          <p className="danger">{error.height}</p>
-          <input
-            type="text"
-            placeholder="Years Of Life ..."
-            value={input[input.yearsOfLife]}
-            onChange={handleChange}
-            className={error.yearsOfLife && "danger"}
-          />
-          <p className="danger">{error.yearsOfLife}</p>
         </div>
+
+        <div className="flex">
+          <input
+            type="text"
+            placeholder="Min Height ..."
+            name="minHeight"
+            value={input[input.value]}
+            onChange={handleChange}
+            required
+          />
+          <p>-</p>
+          <input
+            type="text"
+            placeholder="Max Height ..."
+            name="maxHeight"
+            value={input[input.value]}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="flex">
+          <input
+            type="text"
+            placeholder="Min Years Of Life ..."
+            name="minYearsLife"
+            value={input[input.value]}
+            onChange={handleChange}
+          />
+          <p>-</p>
+          <input
+            type="text"
+            placeholder="Max Years Of Life ..."
+            name="maxYearsLife"
+            value={input[input.value]}
+            onChange={handleChange}
+          />
+        </div>
+
         <input
           type="text"
           placeholder="Temperament ..."
-          value={input[input.temperament]}
+          name="temperament"
+          value={input[input.value]}
           onChange={handleChange}
-          className={error.temperament && "danger"}
           required
         />
-        <p className="danger">{error.temperament}</p>
         <input
           type="text"
           placeholder="Image ..."
-          value={input[input.image]}
+          name="image"
+          value={input[input.value]}
           onChange={handleChange}
-          className={error.image && "danger"}
         />
-        <p className="danger">{error.image}</p>
         <button className="btn-2">Create</button>
       </form>
     </div>
