@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-//import validate from "../validate/validate";
+import validate from "../validate/validate";
 import "./CreateBreed.css";
 import dogForm from "./images/dogForm.jpg";
 import { useDispatch } from "react-redux";
@@ -22,11 +22,20 @@ export default function CreateBreed() {
     image: "",
   });
 
+  const [error, setError] = useState({});
+
   const handleChange = (e) => {
     setInput({
       ...input,
       [e.target.name]: e.target.value,
     });
+
+    setError(
+      validate({
+        ...input,
+        [e.target.name]: e.target.value,
+      })
+    );
   };
 
   const handleSubmit = (e) => {
@@ -49,6 +58,7 @@ export default function CreateBreed() {
           onChange={handleChange}
           required
         />
+        <p className="danger">{error.name}</p>
         <div className="flex">
           <input
             type="text"
@@ -68,7 +78,7 @@ export default function CreateBreed() {
             required
           />
         </div>
-
+        <p className="danger">{error.weight}</p>
         <div className="flex">
           <input
             type="text"
@@ -88,6 +98,7 @@ export default function CreateBreed() {
             required
           />
         </div>
+        <p className="danger">{error.height}</p>
 
         <div className="flex">
           <input
@@ -109,8 +120,8 @@ export default function CreateBreed() {
 
         <input
           type="text"
-          placeholder="Temperament ..."
-          name="temperament"
+          placeholder="Temperaments ..."
+          name="temperaments"
           value={input[input.value]}
           onChange={handleChange}
           required

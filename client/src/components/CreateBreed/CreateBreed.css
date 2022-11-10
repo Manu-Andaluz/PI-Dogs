@@ -13,7 +13,7 @@
     height: 80vh;
     width: 50%;
     padding: 1rem;
-    gap: 2rem;
+    gap: 1rem;
     border: 1px solid rgb(197, 197, 197);
 }
 
@@ -36,6 +36,11 @@
     justify-content: space-between;
 }
 
+.danger {
+    display: grid;
+    place-content: center;
+}
+
 .btn-2 {
     background-color: rgb(248, 173, 33);
     color: white;
@@ -45,10 +50,6 @@
     margin: 0 auto;
     cursor: pointer;
     transition: all .2s linear;
-}
-
-.danger {
-    display: block;
 }
 
 p.danger {
