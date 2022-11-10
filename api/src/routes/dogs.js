@@ -40,9 +40,13 @@ app.get('/:breedId', async (req, res) => {
 })
 
 app.post('/', async (req, res) => {
-    const { name, minHeight, maxHeight, minWeight, maxWeight, minYearsLife, maxYearsLife, temperament, origin, image } = req.body
+    const { name, minHeight, maxHeight, minWeight, maxWeight, minYearsLife, maxYearsLife, temperaments, origin, image } = req.body
 
     try {
+
+        if (!name || !minHeight || !maxHeight || !minWeight || !maxWeight || !temperaments) {
+            return res.status(404).send('Missing data')
+        }
 
         const allData = await getAllData()
         const found = allData.find(e => e.name.toLowerCase() === name.toLowerCase()) // lowerCase para poder verificar si coinciden
@@ -59,12 +63,12 @@ app.post('/', async (req, res) => {
             image: image ? image : null
         })
 
-        await temperament.split(' ').forEach(async element => {
+        await temperaments.split(' ').forEach(async element => {
             const newTemperament = await Temperament.findAll({ where: { name: element } })
             await newBread.addTemperament(newTemperament)
         })
 
-        res.status(201).send('Breed created')
+        res.status(201).send('Breed created !!')
 
     } catch (err) {
         res.status(400).send(err)

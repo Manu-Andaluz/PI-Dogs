@@ -17,7 +17,7 @@ export default function CreateBreed() {
     maxHeight: Number,
     minYearsLife: "",
     maxYearsLife: "",
-    temperament: "",
+    temperaments: "",
     origin: "",
     image: "",
   });
@@ -61,7 +61,7 @@ export default function CreateBreed() {
         <p className="danger">{error.name}</p>
         <div className="flex">
           <input
-            type="text"
+            type="number"
             placeholder="Min Weight ..."
             name="minWeight"
             value={input[input.value]}
@@ -70,7 +70,7 @@ export default function CreateBreed() {
           />
           <p>-</p>
           <input
-            type="text"
+            type="number"
             placeholder="Max Weight ..."
             name="maxWeight"
             value={input[input.value]}
@@ -81,7 +81,7 @@ export default function CreateBreed() {
         <p className="danger">{error.weight}</p>
         <div className="flex">
           <input
-            type="text"
+            type="number"
             placeholder="Min Height ..."
             name="minHeight"
             value={input[input.value]}
@@ -90,7 +90,7 @@ export default function CreateBreed() {
           />
           <p>-</p>
           <input
-            type="text"
+            type="number"
             placeholder="Max Height ..."
             name="maxHeight"
             value={input[input.value]}
@@ -102,7 +102,7 @@ export default function CreateBreed() {
 
         <div className="flex">
           <input
-            type="text"
+            type="number"
             placeholder="Min Years Of Life ..."
             name="minYearsLife"
             value={input[input.value]}
@@ -110,7 +110,7 @@ export default function CreateBreed() {
           />
           <p>-</p>
           <input
-            type="text"
+            type="number"
             placeholder="Max Years Of Life ..."
             name="maxYearsLife"
             value={input[input.value]}
