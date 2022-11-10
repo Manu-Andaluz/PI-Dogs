@@ -18,6 +18,7 @@ export default function CreateBreed() {
     minYearsLife: "",
     maxYearsLife: "",
     temperaments: "",
+    origin: "",
     image: "",
   });
 
@@ -40,7 +41,6 @@ export default function CreateBreed() {
     <div className="create-breed-container">
       <img src={dogForm} className="dog-img " alt="nose" />
       <form className="create-breed-form" onSubmit={handleSubmit}>
-        <h3>Create a New Breed !!</h3>
         <input
           type="text"
           placeholder="Name ..."
@@ -114,6 +114,13 @@ export default function CreateBreed() {
           value={input[input.value]}
           onChange={handleChange}
           required
+        />
+        <input
+          type="text"
+          placeholder="Origin ..."
+          name="origin"
+          value={input[input.value]}
+          onChange={handleChange}
         />
         <input
           type="text"

@@ -3,7 +3,7 @@ import "./BreedDetails.css";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getBreedsDetail } from "../../redux/actions/actions";
+import { deleteBreed, getBreedsDetail } from "../../redux/actions/actions";
 
 export default function BreedDetails() {
   let { id } = useParams();
@@ -14,6 +14,11 @@ export default function BreedDetails() {
   }, []);
 
   const state = useSelector((state) => state.breedDetail);
+
+  const handleClick = () => {
+    dispatch(deleteBreed(state.id));
+  };
+
   return (
     <div className="container-details">
       <ul className="detail-list">
@@ -34,6 +39,11 @@ export default function BreedDetails() {
         </li>
         <li>
           <span>Temperament:</span> {state.temperament}
+        </li>
+        <li>
+          <button className="btn-3" onClick={handleClick}>
+            DELETE BREED
+          </button>
         </li>
       </ul>
       <img src={state.image} alt="" />

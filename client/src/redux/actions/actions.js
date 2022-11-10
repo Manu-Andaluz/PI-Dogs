@@ -24,10 +24,10 @@ export function getBreedsDetail(id) {
     }
 }
 
-export function createBreed({ name, minHeight, maxHeight, minWeight, maxWeight, minYearsLife, maxYearsLife, temperaments, image }) {
+export function createBreed({ name, minHeight, maxHeight, minWeight, maxWeight, minYearsLife, maxYearsLife, temperaments, origin, image }) {
     return function (dispatch) {
         try {
-            const newBreed = { name, minHeight, maxHeight, minWeight, maxWeight, minYearsLife, maxYearsLife, temperaments, image }
+            const newBreed = { name, minHeight, maxHeight, minWeight, maxWeight, minYearsLife, maxYearsLife, temperaments, origin, image }
 
             fetch('http://localhost:3001/dogs', {  // Enter your IP address here
                 method: 'POST',
@@ -38,6 +38,20 @@ export function createBreed({ name, minHeight, maxHeight, minWeight, maxWeight, 
 
         } catch (err) {
             return dispatch({ type: 'CREATE_BREED', payload: err })
+        }
+    }
+}
+
+export function deleteBreed(id) {
+    return function (dispatch) {
+        try {
+
+            fetch('http://localhost:3001/dogs/delete/' + id, {
+                method: 'DELETE',
+            })
+
+        } catch (err) {
+            return dispatch({ type: 'DELETE_BREED', payload: err })
         }
     }
 }

@@ -40,7 +40,7 @@ app.get('/:breedId', async (req, res) => {
 })
 
 app.post('/', async (req, res) => {
-    const { name, minHeight, maxHeight, minWeight, maxWeight, minYearsLife, maxYearsLife, temperaments, image } = req.body
+    const { name, minHeight, maxHeight, minWeight, maxWeight, minYearsLife, maxYearsLife, temperaments, origin, image } = req.body
 
     try {
 
@@ -55,6 +55,7 @@ app.post('/', async (req, res) => {
             height: `${minHeight} - ${maxHeight}`,
             weight: `${minWeight} - ${maxWeight}`,
             yearsOfLife: `${minYearsLife} - ${maxYearsLife}`,
+            origin: origin ? origin : null,
             image: image ? image : null
         })
 
@@ -65,6 +66,22 @@ app.post('/', async (req, res) => {
 
         res.status(201).send('Breed created')
 
+    } catch (err) {
+        res.status(400).send(err)
+    }
+})
+
+app.delete('/delete/:id', async function (req, res) {
+    const { id } = req.params
+    try {
+        const removeBreed = await Breed.findByPk(id)
+
+        if (removeBreed) {
+            await removeBreed.destroy()
+            res.send('Breed Removed')
+        } else {
+            res.statuts(404).send('Wrong Id')
+        }
     } catch (err) {
         res.status(400).send(err)
     }
