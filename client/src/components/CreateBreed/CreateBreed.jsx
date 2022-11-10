@@ -11,10 +11,10 @@ export default function CreateBreed() {
 
   const [input, setInput] = useState({
     name: "",
-    minWeight: Number,
-    maxWeight: Number,
-    minHeight: Number,
-    maxHeight: Number,
+    minWeight: undefined,
+    maxWeight: undefined,
+    minHeight: undefined,
+    maxHeight: undefined,
     minYearsLife: "",
     maxYearsLife: "",
     temperaments: "",
@@ -40,10 +40,14 @@ export default function CreateBreed() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createBreed(input));
-    Array.from(document.querySelectorAll("input")).forEach(
-      (input) => (input.value = "")
-    );
+    if (error.name || error.temperaments) {
+      alert("bikini mas na");
+    } else {
+      dispatch(createBreed(input));
+      Array.from(document.querySelectorAll("input")).forEach(
+        (input) => (input.value = "")
+      );
+    }
   };
 
   return (
@@ -98,7 +102,7 @@ export default function CreateBreed() {
             required
           />
         </div>
-        <p className="danger">{error.height}</p>
+        <p className="danger">{error.height && error.height}</p>
 
         <div className="flex">
           <input
@@ -126,6 +130,7 @@ export default function CreateBreed() {
           onChange={handleChange}
           required
         />
+        <p className="danger">{error.temperaments}</p>
         <input
           type="text"
           placeholder="Origin ..."
