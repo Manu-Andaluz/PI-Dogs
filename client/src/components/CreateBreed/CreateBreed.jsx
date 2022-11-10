@@ -17,7 +17,7 @@ export default function CreateBreed() {
     maxHeight: Number,
     minYearsLife: "",
     maxYearsLife: "",
-    temperaments: "",
+    temperament: "",
     origin: "",
     image: "",
   });
@@ -110,7 +110,7 @@ export default function CreateBreed() {
         <input
           type="text"
           placeholder="Temperament ..."
-          name="temperaments"
+          name="temperament"
           value={input[input.value]}
           onChange={handleChange}
           required

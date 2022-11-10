@@ -15,6 +15,10 @@
     gap: 1rem;
 }
 
+.detail-list li {
+    display: flex;
+}
+
 .detail-list span {
     font-size: 1.1rem;
     color: black;

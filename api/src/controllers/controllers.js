@@ -12,7 +12,7 @@ const getApiInfo = async () => {
             weight: breed.weight.metric,
             height: breed.height.metric,
             yearsOfLife: breed.life_span,
-            temperament: breed.temperament,
+            temperaments: breed.temperament,
             image: breed.image.url
         }
     })

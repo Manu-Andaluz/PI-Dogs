@@ -38,7 +38,10 @@ export default function BreedDetails() {
           <span>Years of Life:</span> {state.yearsOfLife}
         </li>
         <li>
-          <span>Temperament:</span> {state.temperament}
+          <span>Temperament: </span>{" "}
+          {typeof state.temperaments === "string" && state.temperaments}
+          {Array.isArray(state.temperaments) &&
+            state.temperaments.map((data) => <p>{data.name}&nbsp;</p>)}
         </li>
         <li>
           <button className="btn-3" onClick={handleClick}>
@@ -50,3 +53,16 @@ export default function BreedDetails() {
     </div>
   );
 }
+
+// {/* dogs api */}
+// {
+//   typeof details.temperaments === 'string' && details.temperaments.length
+//   ? (details.temperaments.length ? <div><p className="temp">{details.temperaments}</p></div> : null)
+//   : null
+// }
+// {/* dogs creados en la db */}
+// {
+//   Array.isArray(details.temperaments) && details.temperaments.length
+//   ? <div><p className="temp">{details.temperaments.map(t => Object.values(t)).join(', ')}.</p></div>
+//   : null
+// }
