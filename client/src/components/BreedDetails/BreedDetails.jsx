@@ -21,6 +21,8 @@ export default function BreedDetails() {
 
   return (
     <div className="container-details">
+      <img src={state.image} alt="" />
+
       <ul className="detail-list">
         <li>
           <span>Breed Name:</span> {state.name}
@@ -49,20 +51,6 @@ export default function BreedDetails() {
           </button>
         </li>
       </ul>
-      <img src={state.image} alt="" />
     </div>
   );
 }
-
-// {/* dogs api */}
-// {
-//   typeof details.temperaments === 'string' && details.temperaments.length
-//   ? (details.temperaments.length ? <div><p className="temp">{details.temperaments}</p></div> : null)
-//   : null
-// }
-// {/* dogs creados en la db */}
-// {
-//   Array.isArray(details.temperaments) && details.temperaments.length
-//   ? <div><p className="temp">{details.temperaments.map(t => Object.values(t)).join(', ')}.</p></div>
-//   : null
-// }

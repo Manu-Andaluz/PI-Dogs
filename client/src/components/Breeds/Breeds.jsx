@@ -9,8 +9,8 @@ import SearchForm from "../SearchForm/SearchForm";
 
 export default function Breeds() {
   const state = useSelector((state) => state.breed);
-  const [numberBreeds, setNumberBreeds] = useState(16);
-  let breeds = state.length > 16 ? state.slice(0, numberBreeds) : state;
+  const [numberBreeds, setNumberBreeds] = useState(8);
+  let breeds = state.length > 8 ? state.slice(0, numberBreeds) : state;
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export default function Breeds() {
   }, []);
 
   const handleNextPage = () => {
-    setNumberBreeds(numberBreeds + 16);
+    setNumberBreeds(numberBreeds + 8);
   };
 
   return (
@@ -31,7 +31,10 @@ export default function Breeds() {
               <BreedCard
                 name={element.name}
                 image={element.image}
+                temperaments={element.temperaments}
+                weight={element.weight}
                 id={element.id}
+                key={element.id}
               />
             );
           })}

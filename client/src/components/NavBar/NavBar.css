@@ -1,4 +1,4 @@
-nav {
+.nav-bar {
     display: flex;
     padding: 1rem 2rem;
     justify-content: space-around;
@@ -7,23 +7,78 @@ nav {
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
-.logo p {
+.logo a {
     font-size: 1.5rem;
     font-weight: 600;
     color: rgb(248, 173, 33);
 }
 
-ul {
+.container-links {
     display: flex;
     justify-content: space-around;
     width: 50%;
 }
 
-li {
+.nav-links {
     list-style: none;
 }
 
 a {
     text-decoration: none;
     color: black;
+}
+
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 2px;
+    background-color: grey;
+    margin: 5px;
+    transition: all 0.25s ease-in-out;
+}
+
+@media (max-width:860px) {
+
+    /* NavBar */
+    .nav-bar {
+        justify-content: space-around;
+    }
+
+    .burger {
+        display: block;
+    }
+
+    .container-links {
+        display: none;
+    }
+
+    .nav-active {
+        position: absolute;
+        top: 10vh;
+        display: grid;
+        gap: 1rem;
+        height: 90vh;
+        padding-top: 5rem;
+        text-align: center;
+        background-color: rgb(238, 238, 238);
+        width: 100%;
+        transition: height .4s linear;
+    }
+
+    .toggle .line1 {
+        transform: rotate(-45deg) translate(-5px, 5px);
+    }
+
+    .toggle .line2 {
+        opacity: 0;
+    }
+
+    .toggle .line3 {
+        transform: rotate(45deg) translate(-5px, -5px);
+    }
+
 }

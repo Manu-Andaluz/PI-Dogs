@@ -1,17 +1,21 @@
 .container-details {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,
+            minmax(500px, 1fr));
     gap: 1rem;
     place-content: center;
     align-items: center;
-    margin: 3rem;
+    margin: 0 auto;
+    padding: 2rem 1rem;
 }
 
 .container-details img {
-    max-width: 50%;
+    width: 500px;
 }
 
 .detail-list {
     display: grid;
+    place-content: center;
     gap: 1rem;
 }
 
@@ -35,4 +39,16 @@
 
 .btn-3:hover {
     background-color: rgb(182, 6, 6);
+}
+
+@media (max-width: 860px) {
+    .container-details {
+        grid-template-columns: none;
+        gap: 3rem;
+    }
+
+    .container-details img {
+        width: 100%;
+    }
+
 }

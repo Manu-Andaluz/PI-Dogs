@@ -14,8 +14,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route exact path="/" element={<FrontPage />} />
-        <Route exact path="/home" element={<FrontPage />} />
-        <Route exact path="/breeds" element={<Breeds />} />
+        <Route exact path="/home" element={<Breeds />} />
         <Route exact path="/createBread" element={<CreateBreed />} />
         <Route exact path="/breedDetails/:id" element={<BreedDetails />} />
       </Routes>

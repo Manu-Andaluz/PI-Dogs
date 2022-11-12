@@ -8,7 +8,7 @@
     display: grid;
     gap: 3rem;
     grid-template-columns: repeat(auto-fit,
-            minmax(250px, 1fr));
+            minmax(450px, 1fr));
     padding: 2rem;
 }
 
@@ -25,4 +25,12 @@
 
 .btn-1:hover {
     background-color: rgb(223, 150, 14);
+}
+
+@media (max-width: 860px) {
+    .container-grid {
+        display: grid;
+        gap: 3rem;
+        grid-template-columns: none;
+    }
 }

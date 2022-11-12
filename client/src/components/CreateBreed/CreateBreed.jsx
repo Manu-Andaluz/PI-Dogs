@@ -41,7 +41,7 @@ export default function CreateBreed() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (error.name || error.temperaments) {
-      alert("bikini mas na");
+      alert("Invalid values");
     } else {
       dispatch(createBreed(input));
       Array.from(document.querySelectorAll("input")).forEach(
@@ -145,7 +145,11 @@ export default function CreateBreed() {
           value={input[input.value]}
           onChange={handleChange}
         />
-        <button className="btn-2">Create</button>
+        <button
+          className={error.name || error.temperaments ? "btn-2-error" : "btn-2"}
+        >
+          Create
+        </button>
       </form>
     </div>
   );
