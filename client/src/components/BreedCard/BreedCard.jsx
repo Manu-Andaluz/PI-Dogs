@@ -9,12 +9,12 @@ export default function BreedCard({ name, image, temperaments, weight, id }) {
         <h4>{name}</h4>
 
         <div className="card-temperaments">
-          {Array.isArray(temperaments) ? (
+          {Array.isArray(temperaments) ? ( // Data Base temperaments
             temperaments.map((data, index) => (
               <p key={index}>{data.name}&nbsp;</p>
             ))
           ) : (
-            <p>{temperaments}</p>
+            <p>{temperaments}</p> // Api temperaments
           )}
         </div>
         <p>

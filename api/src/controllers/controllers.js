@@ -1,7 +1,7 @@
 const axios = require('axios')
 const { Breed, Temperament } = require('../db');
 
-// Obteniendo info de la api
+// Getting info from the api
 const getApiInfo = async () => {
     const apiUrl = await axios.get('https://api.thedogapi.com/v1/breeds')
     const apiInfo = await apiUrl.data.map(breed => {
@@ -20,7 +20,7 @@ const getApiInfo = async () => {
     return apiInfo
 }
 
-// Obteniendo info de la db
+// Getting info from the Data Base
 const getDataBaseInfo = async () => {
     const data = await Breed.findAll({
         include: {
@@ -33,7 +33,7 @@ const getDataBaseInfo = async () => {
     return data
 }
 
-// Obteniendo api e db info para unirlas
+// Getting info from the api and fron the Data Base
 const getAllData = async () => {
     const apiInfo = await getApiInfo()
     const dataBaseInfo = await getDataBaseInfo()

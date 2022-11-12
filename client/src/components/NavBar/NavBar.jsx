@@ -55,10 +55,10 @@ export default function NavBar() {
         </li>
         <li className="nav-links">
           <NavLink
-            to="/aboutUs"
+            to="/quiz"
             style={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
-            Your Breed
+            Play Quiz
           </NavLink>
         </li>
       </ul>

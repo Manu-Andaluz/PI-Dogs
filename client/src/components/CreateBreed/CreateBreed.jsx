@@ -9,44 +9,34 @@ import { createBreed } from "../../redux/actions/actions";
 export default function CreateBreed() {
   const dispatch = useDispatch();
 
-  const [input, setInput] = useState({
-    name: "",
-    minWeight: undefined,
-    maxWeight: undefined,
-    minHeight: undefined,
-    maxHeight: undefined,
-    minYearsLife: "",
-    maxYearsLife: "",
-    temperaments: "",
-    origin: "",
-    image: "",
-  });
+  const [input, setInput] = useState({});
 
   const [error, setError] = useState({});
 
   const handleChange = (e) => {
     setInput({
       ...input,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value, // key: input name - value: input value
     });
 
     setError(
       validate({
         ...input,
-        [e.target.name]: e.target.value,
+        [e.target.name]: e.target.value, // key: input name - value: input value
       })
     );
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (error.name || error.temperaments) {
+    if (error.name || error.temperaments || error.weigh || error.height) {
+      // validate inputs
       alert("Invalid values");
     } else {
-      dispatch(createBreed(input));
+      dispatch(createBreed(input)); // breed created
       Array.from(document.querySelectorAll("input")).forEach(
         (input) => (input.value = "")
-      );
+      ); // clean the inputs
     }
   };
 
@@ -58,7 +48,7 @@ export default function CreateBreed() {
           type="text"
           placeholder="Name ..."
           name="name"
-          value={input[input.value]}
+          value={input.value} // input.name = input.value
           onChange={handleChange}
           required
         />
@@ -68,7 +58,7 @@ export default function CreateBreed() {
             type="number"
             placeholder="Min Weight ..."
             name="minWeight"
-            value={input[input.value]}
+            value={input.value}
             onChange={handleChange}
             required
           />
@@ -77,7 +67,7 @@ export default function CreateBreed() {
             type="number"
             placeholder="Max Weight ..."
             name="maxWeight"
-            value={input[input.value]}
+            value={input.value}
             onChange={handleChange}
             required
           />
@@ -88,7 +78,7 @@ export default function CreateBreed() {
             type="number"
             placeholder="Min Height ..."
             name="minHeight"
-            value={input[input.value]}
+            value={input.value}
             onChange={handleChange}
             required
           />
@@ -97,7 +87,7 @@ export default function CreateBreed() {
             type="number"
             placeholder="Max Height ..."
             name="maxHeight"
-            value={input[input.value]}
+            value={input.value}
             onChange={handleChange}
             required
           />
@@ -109,7 +99,7 @@ export default function CreateBreed() {
             type="number"
             placeholder="Min Years Of Life ..."
             name="minYearsLife"
-            value={input[input.value]}
+            value={input.value}
             onChange={handleChange}
           />
           <p>-</p>
@@ -117,7 +107,7 @@ export default function CreateBreed() {
             type="number"
             placeholder="Max Years Of Life ..."
             name="maxYearsLife"
-            value={input[input.value]}
+            value={input.value}
             onChange={handleChange}
           />
         </div>
@@ -126,7 +116,7 @@ export default function CreateBreed() {
           type="text"
           placeholder="Temperaments ..."
           name="temperaments"
-          value={input[input.value]}
+          value={input.value}
           onChange={handleChange}
           required
         />
@@ -135,18 +125,22 @@ export default function CreateBreed() {
           type="text"
           placeholder="Origin ..."
           name="origin"
-          value={input[input.value]}
+          value={input.value}
           onChange={handleChange}
         />
         <input
           type="text"
           placeholder="Image ..."
           name="image"
-          value={input[input.value]}
+          value={input.value}
           onChange={handleChange}
         />
         <button
-          className={error.name || error.temperaments ? "btn-2-error" : "btn-2"}
+          className={
+            error.name || error.temperaments || error.weigh || error.height
+              ? "btn-2-error"
+              : "btn-2"
+          } // if inputs values are wrongs the button is red otherwise is orange
         >
           Create
         </button>

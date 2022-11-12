@@ -19,8 +19,9 @@
 .card-content {
     display: grid;
     text-align: center;
+    gap: 1rem;
     margin: 0 auto;
-    padding: 1rem 0;
+    padding: 1rem 8px;
 }
 
 .card-content span {
@@ -29,6 +30,7 @@
 
 .card-temperaments {
     display: flex;
+    font-size: 15px;
 }
 
 @media (max-width: 860px) {

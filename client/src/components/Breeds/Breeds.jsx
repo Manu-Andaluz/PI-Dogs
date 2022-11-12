@@ -13,6 +13,7 @@ export default function Breeds() {
   let breeds = state.length > 8 ? state.slice(0, numberBreeds) : state;
   const dispatch = useDispatch();
 
+  // every time the user enter in the route, i obtain all the breeds
   useEffect(() => {
     dispatch(getBreeds());
   }, []);

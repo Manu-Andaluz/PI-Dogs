@@ -9,6 +9,7 @@ export default function BreedDetails() {
   let { id } = useParams();
   const dispatch = useDispatch();
 
+  // every time the user enter in the route, i obtain the necessary info of the breed
   useEffect(() => {
     dispatch(getBreedsDetail(id));
   }, []);
@@ -25,24 +26,35 @@ export default function BreedDetails() {
 
       <ul className="detail-list">
         <li>
-          <span>Breed Name:</span> {state.name}
+          <span>Breed Name:&nbsp;</span> {state.name}
+        </li>
+
+        {state.origin && (
+          <li>
+            <span>Origin: &nbsp;</span>
+            {state.origin}
+          </li>
+        )}
+
+        <li>
+          <span>Weihgt:&nbsp;</span> {state.weight}
         </li>
         <li>
-          <span>Origin:</span> {state.origin}
+          <span>Height:&nbsp;</span> {state.height}
         </li>
+
+        {state.yearsOfLife && (
+          <li>
+            <span>Years of Life:&nbsp;</span> {state.yearsOfLife}
+          </li>
+        )}
+
         <li>
-          <span>Weihgt:</span> {state.weight}
-        </li>
-        <li>
-          <span>Height:</span> {state.height}
-        </li>
-        <li>
-          <span>Years of Life:</span> {state.yearsOfLife}
-        </li>
-        <li>
-          <span>Temperament: </span>{" "}
-          {typeof state.temperaments === "string" && state.temperaments}
-          {Array.isArray(state.temperaments) &&
+          <span>Temperament:&nbsp;</span>
+          {typeof state.temperaments === "string" && ( // Api temperaments
+            <p>{state.temperaments}</p>
+          )}
+          {Array.isArray(state.temperaments) && // Data Base temperaments
             state.temperaments.map((data) => <p>{data.name}&nbsp;</p>)}
         </li>
         <li>

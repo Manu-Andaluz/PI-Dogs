@@ -1,12 +1,11 @@
 .container-details {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,
-            minmax(500px, 1fr));
-    gap: 1rem;
-    place-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
     align-items: center;
     margin: 0 auto;
     padding: 2rem 1rem;
+    height: 90vh;
 }
 
 .container-details img {

@@ -4,11 +4,10 @@ const initialState = {
 }
 
 export default function rootReducer(state = initialState, action) {
-    // cambiar
     switch (action.type) {
         case 'GET_BREEDS': return {
             ...state,
-            breed: [...action.payload]
+            breed: action.payload
         }
 
         case 'SEARCH_BREED': return {
