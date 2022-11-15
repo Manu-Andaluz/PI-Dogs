@@ -20,6 +20,16 @@ export default function rootReducer(state = initialState, action) {
             breedDetail: action.payload
         }
 
+        case 'GET_API_BREEDS': return {
+            ...state,
+            breed: action.payload
+        }
+
+        case 'GET_BY_TEMPERAMENT': return {
+            ...state,
+            breed: action.payload
+        }
+
         case 'CREATE_BREED': return {
             ...state
         }

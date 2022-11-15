@@ -1,11 +1,13 @@
 import React from "react";
-import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { searchBreed } from "../../redux/actions/actions";
+import {
+  searchBreed,
+  getFilter,
+  getByTemperament,
+} from "../../redux/actions/actions";
 import "./SearchForm.css";
 
 export default function SearchForm() {
-  const [breedName, setBreedName] = useState(); // i created the object to then send it in the get breed
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
@@ -13,8 +15,15 @@ export default function SearchForm() {
   };
 
   const handleChange = (e) => {
-    setBreedName(e.target.value); // i assign the value
-    dispatch(searchBreed(breedName)); // send it in to the get request
+    dispatch(searchBreed(e.target.value)); // send it in to the get request
+  };
+
+  const handleFilter = (e) => {
+    dispatch(getFilter(e.target.value));
+  };
+
+  const hanldeTemperaments = (e) => {
+    dispatch(getByTemperament(e.target.value));
   };
 
   return (
@@ -23,16 +32,20 @@ export default function SearchForm() {
         type="text"
         placeholder="Search Breed ..."
         onChange={(e) => handleChange(e)}
-        value={breedName}
       />
-      <select name="filters">
+      <select name="filters" onChange={handleFilter}>
         <option value="">Filters By</option>
-        <option value="temperaments">Temperaments</option>
         <option value="breedsApi">Api Breeds</option>
         <option value="breedsDB">Data Base Breeds</option>
         <option value="alfabetic">Alfabetic orden</option>
         <option value="weight">Weight</option>
       </select>
+
+      <input
+        type="text"
+        placeholder="Sort by Temperaments ..."
+        onChange={hanldeTemperaments}
+      />
     </form>
   );
 }

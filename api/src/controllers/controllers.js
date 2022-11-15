@@ -41,4 +41,30 @@ const getAllData = async () => {
     return allInfo
 }
 
-module.exports = { getApiInfo, getDataBaseInfo, getAllData }
+const sortByTemperament = async (temperName) => {
+    let apiInfo = await getApiInfo()
+    let dataBaseInfo = await getDataBaseInfo()
+
+    apiInfo = await apiInfo.map(e => {
+        if (e.temperaments) {
+            const find = e.temperaments.split(', ').find(e => e.toLowerCase() === temperName.toLowerCase())
+            if (find) {
+                return e
+            }
+        }
+    }).filter(e => e)
+
+    dataBaseInfo = await dataBaseInfo.map(e => {
+        if (e.temperaments.length > 0) {
+            const find = e.temperaments.find(e => e.name.toLowerCase() === temperName.toLowerCase())
+            if (find) {
+                return e
+            }
+        }
+    }).filter(e => e)
+
+    const allInfo = apiInfo.concat(dataBaseInfo)
+    return allInfo
+}
+
+module.exports = { getApiInfo, getDataBaseInfo, getAllData, sortByTemperament }

@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { Breed, Temperament } = require('../db');
-const { getAllData } = require('../controllers/controllers')
+const { getApiInfo, getDataBaseInfo, getAllData, sortByTemperament } = require('../controllers/controllers')
 
 const app = Router();
 
@@ -22,6 +22,40 @@ app.get('/', async (req, res) => {
         res.status(400).send(err)
     }
 
+})
+
+app.get('/filter/:filterBy', async (req, res) => {
+    const { filterBy } = req.params
+    const { temperName } = req.query
+    try {
+        switch (filterBy) {
+            case 'alfabetic': {
+                const allData = await getAllData()
+                return res.send(allData.sort((a, b) => a.name.localeCompare(b.name)))
+            }
+
+            case 'temperaments': {
+                return res.send(await sortByTemperament(temperName))
+            }
+
+            case 'breedsApi': {
+                const dbData = await getApiInfo()
+                return res.send(dbData)
+            }
+
+            case 'breedsDB': {
+                const apiData = await getDataBaseInfo()
+                return res.send(apiData)
+            }
+
+            default: {
+                return res.send('nothing')
+            }
+        }
+
+    } catch (err) {
+        res.send(err)
+    }
 })
 
 app.get('/:breedId', async (req, res) => {

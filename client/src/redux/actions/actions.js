@@ -24,6 +24,22 @@ export function getBreedsDetail(id) {
     }
 }
 
+export function getFilter(filter) {
+    return function (dispatch) {
+        return fetch(`http://localhost:3001/dogs/filter/${filter}`)
+            .then(res_json => res_json.json())
+            .then(res => dispatch({ type: 'GET_API_BREEDS', payload: res }))
+    }
+}
+
+export function getByTemperament(temperamentName) {
+    return function (dispatch) {
+        return fetch(`http://localhost:3001/dogs/filter/temperaments?temperName=${temperamentName}`)
+            .then(res_json => res_json.json())
+            .then(res => dispatch({ type: 'GET_BY_TEMPERAMENT', payload: res }))
+    }
+}
+
 export function createBreed({ name, minHeight, maxHeight, minWeight, maxWeight, minYearsLife, maxYearsLife, temperaments, origin, image }) {
     return function (dispatch) {
         try {

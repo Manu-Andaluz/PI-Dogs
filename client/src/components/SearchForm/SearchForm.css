@@ -9,14 +9,14 @@
 
 
 .search-breed input {
-    width: 40%;
+    width: 20%;
     padding: 0 1rem;
     height: 3rem;
     border: solid 1px rgb(204, 204, 204);
 }
 
 .search-breed select {
-    width: 10%;
+    width: 15%;
     padding: 0 1rem;
     height: 3rem;
     border: solid 1px rgb(204, 204, 204);
