@@ -5,8 +5,9 @@ import "./NavBar.css";
 
 export default function NavBar() {
   let activeStyle = {
-    borderBottom: "1px solid black",
+    borderBottom: "1px solid #FF9A00",
     paddingBottom: "5px",
+    color: "#FF9A00",
   };
 
   const [toggle, setToggle] = useState({

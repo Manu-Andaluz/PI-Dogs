@@ -6,25 +6,64 @@ import { getBreeds } from "../../redux/actions/actions";
 import BreedCard from "../BreedCard/BreedCard";
 import { useState } from "react";
 import SearchForm from "../SearchForm/SearchForm";
+import Paginated from "../Paginated/Paginated";
 
 export default function Breeds() {
-  const state = useSelector((state) => state.breed);
-  const [numberBreeds, setNumberBreeds] = useState(8);
-  let breeds = state.length > 8 ? state.slice(0, numberBreeds) : state;
+  // every time the user enter in the route, i obtain all the breeds
   const dispatch = useDispatch();
 
-  // every time the user enter in the route, i obtain all the breeds
   useEffect(() => {
     dispatch(getBreeds());
   }, []);
 
+  const allBreeds = useSelector((state) => state.breed);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [numberBreeds, setNumberBreeds] = useState(8);
+
+  const indexOfLastBreed = numberBreeds * currentPage; // 1 * 8 = 8
+  const indexOfFirstBreed = indexOfLastBreed - numberBreeds; //  8 - 8 = 0
+
+  const breeds =
+    allBreeds.length > 8
+      ? allBreeds.slice(indexOfFirstBreed, indexOfLastBreed)
+      : allBreeds;
+
+  const handlePage = (page) => {
+    setCurrentPage(page);
+  };
+
+  const handlePrevPage = () => {
+    setCurrentPage(currentPage - 1);
+  };
+
   const handleNextPage = () => {
-    setNumberBreeds(numberBreeds + 8);
+    setCurrentPage(currentPage + 1);
   };
 
   return (
     <div className="container">
       <SearchForm />
+
+      <div className="flex-nav-paginated">
+        {currentPage !== 1 && (
+          <button className="paginated-btn" onClick={handlePrevPage}>
+            ←
+          </button>
+        )}
+        <Paginated
+          breeds={allBreeds.length}
+          breedsPerPage={numberBreeds}
+          paginated={handlePage}
+          currentPage={currentPage}
+        />
+        {currentPage !== 22 && (
+          <button className="paginated-btn" onClick={handleNextPage}>
+            →
+          </button>
+        )}
+      </div>
+
       <div className="container-grid">
         {breeds &&
           breeds.map((element) => {
@@ -41,9 +80,24 @@ export default function Breeds() {
           })}
       </div>
 
-      <button className="btn-1" onClick={handleNextPage}>
-        Next Page
-      </button>
+      <div className="flex-nav-paginated">
+        {currentPage !== 1 && (
+          <button className="paginated-btn" onClick={handlePrevPage}>
+            ←
+          </button>
+        )}
+        <Paginated
+          breeds={allBreeds.length}
+          breedsPerPage={numberBreeds}
+          paginated={handlePage}
+          currentPage={currentPage}
+        />
+        {currentPage !== 22 && (
+          <button className="paginated-btn" onClick={handleNextPage}>
+            →
+          </button>
+        )}
+      </div>
     </div>
   );
 }
