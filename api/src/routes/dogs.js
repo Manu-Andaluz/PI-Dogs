@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { Breed, Temperament } = require('../db');
-const { getApiInfo, getDataBaseInfo, getAllData, sortByTemperament } = require('../controllers/controllers')
+const { getApiInfo, getDataBaseInfo, getAllData, sortByTemperament, sortByWeight } = require('../controllers/controllers')
 
 const app = Router();
 
@@ -54,15 +54,13 @@ app.get('/filter/:filterBy', async (req, res) => {
             }
 
             case 'lessWeight': {
-                let allData = await getAllData()
-                allData = allData.sort((a, b) => a.weight.split(' - ').reduce((a, b) => Number(a) + Number(b)) - b.weight.split(' - ').reduce((a, b) => Number(a) + Number(b)))
+                const allData = await sortByWeight()
                 return res.send(allData)
             }
 
             case 'moreWeight': {
-                let allData = await getAllData()
-                allData = allData.sort((a, b) => b.weight.split(' - ').reduce((a, b) => Number(a) + Number(b)) - a.weight.split(' - ').reduce((a, b) => Number(a) + Number(b)))
-                return res.send(allData)
+                const allData = await sortByWeight()
+                return res.send(allData.reverse())
             }
 
             default: {

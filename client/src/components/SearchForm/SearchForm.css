@@ -16,8 +16,36 @@
 }
 
 .search-breed select {
-    width: 15%;
+    width: 20%;
     padding: 0 1rem;
     height: 3rem;
     border: solid 1px rgb(204, 204, 204);
+}
+
+
+@media (max-width:1040px) {
+    .search-breed input {
+        width: 30%;
+    }
+
+    .search-breed select {
+        width: 40%;
+    }
+}
+
+@media (max-width:650px) {
+    .search-breed {
+        display: grid;
+        place-content: center;
+        width: 100%;
+        gap: 1rem;
+    }
+
+    .search-breed input {
+        width: 100%;
+    }
+
+    .search-breed select {
+        width: 100%;
+    }
 }

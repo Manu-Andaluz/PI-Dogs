@@ -19,7 +19,10 @@ export default function BreedCard({ name, image, temperaments, weight, id }) {
         </div>
         <p>
           <span>Weight: </span>
-          {weight}
+          {weight
+            .split(" - ")
+            .map((e) => `${e} kg`)
+            .join(" - ")}
         </p>
       </div>
     </Link>

@@ -1,14 +1,22 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   searchBreed,
   getFilter,
   getByTemperament,
+  getTemperaments,
 } from "../../redux/actions/actions";
 import "./SearchForm.css";
 
 export default function SearchForm() {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getTemperaments());
+  }, []);
+
+  const state = useSelector((state) => state.temperaments);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -42,11 +50,18 @@ export default function SearchForm() {
         <option value="moreWeight">More Weight</option>
       </select>
 
-      <input
+      <select name="temperaments" onChange={hanldeTemperaments}>
+        <option value="">Sort by Temperament</option>
+        {state.map((e) => (
+          <option value={e.name}>{e.name}</option>
+        ))}
+      </select>
+
+      {/* <input
         type="text"
         placeholder="Sort by Temperaments ..."
         onChange={hanldeTemperaments}
-      />
+      /> */}
     </form>
   );
 }

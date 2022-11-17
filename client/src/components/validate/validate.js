@@ -11,10 +11,14 @@ export default function validate(input) {
 
   if (!input.minWeight || !input.maxWeight) {
     errors.weight = 'Weight is required'
+  } else if (input.minWeight >= input.maxWeight) {
+    errors.weight = 'Weight is invalid'
   }
 
   if (!input.minHeight || !input.maxHeight) {
     errors.height = 'Height is required'
+  } else if (input.minHeight >= input.maxHeight) {
+    errors.height = 'Height is invalid'
   }
 
   if (!input.temperaments) {

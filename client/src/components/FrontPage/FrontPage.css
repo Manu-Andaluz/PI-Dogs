@@ -30,3 +30,34 @@ h1 {
     border-radius: 10px;
     background-color: #FF9A00;
 }
+
+
+@media (max-width:860px) {
+    .background-image {
+        background-image: url('/public/vertical-dog.jpg');
+        background-position: right;
+        background-size: cover;
+        min-height: 90vh;
+    }
+
+    .front-cover {
+        place-content: start space-evenly;
+        width: 100%;
+        padding: 1rem 0;
+    }
+
+    h1 {
+        display: none;
+    }
+
+    .btn-home {
+        margin: 0 auto;
+        width: 200px;
+    }
+}
+
+@media (max-width:750px) {
+    .front-cover {
+        padding: 3rem 0;
+    }
+}

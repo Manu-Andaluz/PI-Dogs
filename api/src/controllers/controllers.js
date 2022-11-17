@@ -67,4 +67,10 @@ const sortByTemperament = async (temperName) => {
     return allInfo
 }
 
-module.exports = { getApiInfo, getDataBaseInfo, getAllData, sortByTemperament }
+const sortByWeight = async () => {
+    let allData = await getAllData()
+    allData = allData.sort((a, b) => a.weight.split(' - ').reduce((a, b) => Number(a) + Number(b)) - b.weight.split(' - ').reduce((a, b) => Number(a) + Number(b)))
+    return allData
+}
+
+module.exports = { getApiInfo, getDataBaseInfo, getAllData, sortByTemperament, sortByWeight }

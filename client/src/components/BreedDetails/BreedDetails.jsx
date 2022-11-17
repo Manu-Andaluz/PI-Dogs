@@ -37,10 +37,20 @@ export default function BreedDetails() {
         )}
 
         <li>
-          <span>Weihgt:&nbsp;</span> {state.weight}
+          <span>Weihgt:&nbsp;</span>
+          {state.weight &&
+            state.weight
+              .split(" - ")
+              .map((e) => `${e} kg`)
+              .join(" - ")}
         </li>
         <li>
-          <span>Height:&nbsp;</span> {state.height}
+          <span>Height:&nbsp;</span>
+          {state.height &&
+            state.height
+              .split(" - ")
+              .map((e) => `${e} cm`)
+              .join(" - ")}
         </li>
 
         {state.yearsOfLife && (
