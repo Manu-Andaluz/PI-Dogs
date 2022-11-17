@@ -29,9 +29,14 @@ app.get('/filter/:filterBy', async (req, res) => {
     const { temperName } = req.query
     try {
         switch (filterBy) {
-            case 'alfabetic': {
+            case 'alfabetic-A-Z': {
                 const allData = await getAllData()
                 return res.send(allData.sort((a, b) => a.name.localeCompare(b.name)))
+            }
+
+            case 'alfabetic-Z-A': {
+                const allData = await getAllData()
+                return res.send(allData.sort((a, b) => b.name.localeCompare(a.name)))
             }
 
             case 'temperaments': {
@@ -46,6 +51,18 @@ app.get('/filter/:filterBy', async (req, res) => {
             case 'breedsDB': {
                 const apiData = await getDataBaseInfo()
                 return res.send(apiData)
+            }
+
+            case 'lessWeight': {
+                let allData = await getAllData()
+                allData = allData.sort((a, b) => a.weight.split(' - ').reduce((a, b) => Number(a) + Number(b)) - b.weight.split(' - ').reduce((a, b) => Number(a) + Number(b)))
+                return res.send(allData)
+            }
+
+            case 'moreWeight': {
+                let allData = await getAllData()
+                allData = allData.sort((a, b) => b.weight.split(' - ').reduce((a, b) => Number(a) + Number(b)) - a.weight.split(' - ').reduce((a, b) => Number(a) + Number(b)))
+                return res.send(allData)
             }
 
             default: {

@@ -34,11 +34,12 @@ export default function SearchForm() {
         onChange={(e) => handleChange(e)}
       />
       <select name="filters" onChange={handleFilter}>
-        <option value="">Filters By</option>
+        <option value="alfabetic-A-Z">Alfabetic (A-Z)</option>
+        <option value="alfabetic-Z-A">Alfabetic (Z-A)</option>
         <option value="breedsApi">Api Breeds</option>
         <option value="breedsDB">Data Base Breeds</option>
-        <option value="alfabetic">Alfabetic orden</option>
-        <option value="weight">Weight</option>
+        <option value="lessWeight">Less Weight</option>
+        <option value="moreWeight">More Weight</option>
       </select>
 
       <input
