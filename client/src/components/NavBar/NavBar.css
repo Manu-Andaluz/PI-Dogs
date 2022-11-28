@@ -5,12 +5,13 @@
     align-items: center;
     min-height: 10vh;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    background-color: white;
 }
 
 .logo a {
     font-size: 1.5rem;
     font-weight: 600;
-    color: #FF9A00;
+    color: #3a3aac;
 }
 
 .container-links {

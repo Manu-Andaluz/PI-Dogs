@@ -34,8 +34,10 @@ const { Breed, Temperament } = sequelize.models;
 // Here would come the relationships
 // Product.hasMany(Reviews);
 // hasMany is used in a One To Many relationship while belongsToMany refers to a Many To Many
+
 Breed.belongsToMany(Temperament, { through: 'breed_temperament' })
 Temperament.belongsToMany(Breed, { through: 'breed_temperament' })
+// hasMany is used in a One To Many relationship while belongsToMany refers to a Many To Many relationship
 
 
 module.exports = {

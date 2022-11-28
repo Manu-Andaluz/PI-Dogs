@@ -5,9 +5,9 @@ import "./NavBar.css";
 
 export default function NavBar() {
   let activeStyle = {
-    borderBottom: "1px solid #FF9A00",
+    borderBottom: "1px solid #3a3aac",
     paddingBottom: "5px",
-    color: "#FF9A00",
+    color: "#3a3aac",
   };
 
   const [toggle, setToggle] = useState({
@@ -56,10 +56,10 @@ export default function NavBar() {
         </li>
         <li className="nav-links">
           <NavLink
-            to="/quiz"
+            to="/aboutUs"
             style={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
-            Play Quiz
+            About Us
           </NavLink>
         </li>
       </ul>

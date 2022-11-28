@@ -81,10 +81,10 @@ app.get('/:breedId', async (req, res) => {
         const allData = await getAllData()
         const breed = await allData.find(data => data.id == breedId)
 
-        breed ? res.send(breed) : res.send('not found')
+        breed ? res.send(breed) : res.status(404).send('not found')
 
     } catch (err) {
-        res.status(400).send(err)
+        res.status(404).send(err)
     }
 })
 
@@ -94,7 +94,7 @@ app.post('/', async (req, res) => {
     try {
 
         if (!name || !minHeight || !maxHeight || !minWeight || !maxWeight || !temperaments) {
-            return res.status(404).send('Missing data')
+            return res.status(400).send('Missing data')
         }
 
         // checking if the breed already exists

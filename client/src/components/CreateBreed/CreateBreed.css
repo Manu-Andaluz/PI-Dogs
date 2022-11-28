@@ -1,11 +1,12 @@
 .create-breed-container {
     display: flex;
     justify-content: center;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
 }
 
 .dog-img {
     height: 85vh;
+    border-radius: 7px 0 0 7px;
 }
 
 .create-breed-form {
@@ -14,7 +15,9 @@
     width: 50%;
     padding: 1rem;
     gap: 1rem;
-    border: 1px solid rgb(197, 197, 197);
+    border-radius: 0 7px 7px 0;
+    background-color: white;
+
 }
 
 .create-breed-form h3 {
@@ -42,13 +45,19 @@
 }
 
 .btn-2 {
-    background-color: rgb(248, 173, 33);
+    background-color: #f8ad21;
     color: white;
     border: none;
     width: 50%;
     padding: 7px 0;
     margin: 0 auto;
     cursor: pointer;
+    transition: all .2s linear;
+    border-radius: 6px;
+}
+
+.btn-2:hover {
+    background-color: #e29506;
 }
 
 .btn-2-error {
@@ -58,6 +67,9 @@
     width: 50%;
     padding: 7px 0;
     margin: 0 auto;
+    cursor: pointer;
+    transition: all .2s linear;
+    border-radius: 6px;
 }
 
 p.danger {

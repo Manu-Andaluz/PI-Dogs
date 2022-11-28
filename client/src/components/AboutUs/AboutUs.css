@@ -1,0 +1,27 @@
+.about-us-container {
+    display: grid;
+    place-content: center;
+    height: 90vh;
+    gap: 1rem;
+    text-align: center;
+    margin: 0 4rem;
+}
+
+.tech-stack {
+    display: grid;
+    gap: 5px;
+}
+
+.tech-stack li {
+    list-style: none;
+}
+
+.project-summary span {
+    font-weight: 600;
+}
+
+@media (max-width:860px) {
+    .about-us-container {
+        margin: 1rem 0;
+    }
+}

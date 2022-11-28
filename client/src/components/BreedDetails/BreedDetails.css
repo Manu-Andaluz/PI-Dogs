@@ -1,15 +1,17 @@
 .container-details {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0 auto;
-    padding: 2rem 1rem;
-    height: 90vh;
+    display: grid;
+    width: fit-content;
+    gap: 2rem;
+    padding: 1rem;
+    margin: 2rem auto;
+    border-radius: 6px;
+    background-color: white;
+    border-radius: 6px 6px 0 0;
 }
 
 .container-details img {
     width: 500px;
+    margin: auto;
 }
 
 .detail-list {
@@ -20,11 +22,13 @@
 
 .detail-list li {
     display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
 }
 
 .detail-list span {
     font-size: 1.1rem;
-    color: black;
+    color: rgb(63, 121, 230);
     font-weight: 600;
 }
 
@@ -34,6 +38,8 @@
     border: none;
     padding: 8px 1rem;
     cursor: pointer;
+    margin-bottom: 1rem;
+    margin: auto;
 }
 
 .btn-3:hover {

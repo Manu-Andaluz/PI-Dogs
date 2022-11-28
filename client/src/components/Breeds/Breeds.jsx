@@ -11,8 +11,13 @@ import Paginated from "../Paginated/Paginated";
 export default function Breeds() {
   // every time the user enter in the route, i obtain all the breeds
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false); //  loading gift
 
   useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
     dispatch(getBreeds());
   }, []);
 
@@ -42,62 +47,68 @@ export default function Breeds() {
   };
 
   return (
-    <div className="container">
-      <SearchForm />
+    <>
+      {loading ? (
+        <div className="loader-container"></div>
+      ) : (
+        <div className="container">
+          <SearchForm />
 
-      <div className="flex-nav-paginated">
-        {currentPage !== 1 && (
-          <button className="paginated-btn" onClick={handlePrevPage}>
-            ←
-          </button>
-        )}
-        <Paginated
-          breeds={allBreeds.length}
-          breedsPerPage={numberBreeds}
-          paginated={handlePage}
-          currentPage={currentPage}
-        />
-        {currentPage !== 22 && (
-          <button className="paginated-btn" onClick={handleNextPage}>
-            →
-          </button>
-        )}
-      </div>
+          <div className="flex-nav-paginated">
+            {currentPage !== 1 && (
+              <button className="paginated-btn" onClick={handlePrevPage}>
+                ←
+              </button>
+            )}
+            <Paginated
+              breeds={allBreeds.length}
+              breedsPerPage={numberBreeds}
+              paginated={handlePage}
+              currentPage={currentPage}
+            />
+            {currentPage !== 22 && (
+              <button className="paginated-btn" onClick={handleNextPage}>
+                →
+              </button>
+            )}
+          </div>
 
-      <div className="container-grid">
-        {breeds &&
-          breeds.map((element) => {
-            return (
-              <BreedCard
-                name={element.name}
-                image={element.image}
-                temperaments={element.temperaments}
-                weight={element.weight}
-                id={element.id}
-                key={element.id}
-              />
-            );
-          })}
-      </div>
+          <div className="container-grid">
+            {breeds &&
+              breeds.map((element) => {
+                return (
+                  <BreedCard
+                    name={element.name}
+                    image={element.image}
+                    temperaments={element.temperaments}
+                    weight={element.weight}
+                    id={element.id}
+                    key={element.id}
+                  />
+                );
+              })}
+          </div>
 
-      <div className="flex-nav-paginated">
-        {currentPage !== 1 && (
-          <button className="paginated-btn" onClick={handlePrevPage}>
-            ←
-          </button>
-        )}
-        <Paginated
-          breeds={allBreeds.length}
-          breedsPerPage={numberBreeds}
-          paginated={handlePage}
-          currentPage={currentPage}
-        />
-        {currentPage !== 22 && (
-          <button className="paginated-btn" onClick={handleNextPage}>
-            →
-          </button>
-        )}
-      </div>
-    </div>
+          <div className="flex-nav-paginated">
+            {currentPage !== 1 && (
+              <button className="paginated-btn" onClick={handlePrevPage}>
+                ←
+              </button>
+            )}
+            <Paginated
+              breeds={allBreeds.length}
+              breedsPerPage={numberBreeds}
+              paginated={handlePage}
+              currentPage={currentPage}
+            />
+            {currentPage !== 22 && (
+              <button className="paginated-btn" onClick={handleNextPage}>
+                →
+              </button>
+            )}
+          </div>
+        </div>
+      )}
+    </>
   );
 }
