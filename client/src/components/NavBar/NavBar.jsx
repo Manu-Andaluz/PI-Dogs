@@ -34,7 +34,7 @@ export default function NavBar() {
   return (
     <nav className="nav-bar">
       <div className="logo">
-        <a href="http://localhost:3000/">Breed Dogs</a>
+        <a href="/">Breed Dogs</a>
       </div>
 
       <ul className={toggle.containerLinks}>
