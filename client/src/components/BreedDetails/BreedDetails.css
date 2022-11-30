@@ -16,7 +16,7 @@
 
 .detail-list {
     display: grid;
-    place-content: center;
+    place-content: left;
     gap: 1rem;
 }
 
@@ -30,6 +30,10 @@
     font-size: 1.1rem;
     color: rgb(63, 121, 230);
     font-weight: 600;
+}
+
+.container-button-delete {
+    margin: 0 auto;
 }
 
 .btn-3 {

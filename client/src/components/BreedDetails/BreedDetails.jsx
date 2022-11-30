@@ -2,7 +2,7 @@ import React from "react";
 import "./BreedDetails.css";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { deleteBreed, getBreedsDetail } from "../../redux/actions/actions";
 import { useState } from "react";
 
@@ -77,12 +77,16 @@ export default function BreedDetails() {
               {Array.isArray(state.temperaments) && // Data Base temperaments
                 state.temperaments.map((data) => <p>{data.name}</p>)}
             </li>
-            <li>
-              <button className="btn-3" onClick={handleClick}>
-                DELETE BREED
-              </button>
-            </li>
           </ul>
+          <div className="container-button-delete">
+            {Array.isArray(state.temperaments) && (
+              <Link to="/home">
+                <button className="btn-3" onClick={handleClick}>
+                  DELETE BREED
+                </button>
+              </Link>
+            )}
+          </div>
         </div>
       )}
     </>
