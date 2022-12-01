@@ -66,7 +66,7 @@ export default function Breeds() {
               paginated={handlePage}
               currentPage={currentPage}
             />
-            {currentPage !== 22 && (
+            {currentPage !== 22 && breeds.length >= 8 && (
               <button className="paginated-btn" onClick={handleNextPage}>
                 →
               </button>

@@ -14,6 +14,7 @@ export default function SearchForm() {
 
   useEffect(() => {
     dispatch(getTemperaments());
+    dispatch(getFilter("alfabetic-A-Z"));
   }, []);
 
   const state = useSelector((state) => state.temperaments);
