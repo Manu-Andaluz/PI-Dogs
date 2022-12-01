@@ -13,7 +13,6 @@
     padding: 0 1rem;
     height: 3rem;
     border: solid 1px rgb(204, 204, 204);
-    border-radius: 6px;
 }
 
 .search-breed select {
@@ -21,7 +20,6 @@
     padding: 0 1rem;
     height: 3rem;
     border: solid 1px rgb(204, 204, 204);
-    border-radius: 6px;
 }
 
 
