@@ -1,10 +1,15 @@
 import React from "react";
 import "./AboutUs.css";
+import github from "./images/github.svg";
 
 export default function AboutUs() {
   return (
     <div className="about-us-container">
-      <h4>Project By Manuel Perez Andaluz</h4>
+      <div className="github">
+        <a href="https://github.com/Manu-Andaluz/PI-Dogs">
+          Github Repo <img src={github} alt="github" />
+        </a>
+      </div>
       <h4>Tech Stack: </h4>
       <ul className="tech-stack">
         <li>React Router</li>

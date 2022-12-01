@@ -7,6 +7,14 @@
     margin: 0 4rem;
 }
 
+.about-us-container a {
+    font-weight: 600;
+}
+
+.about-us-container img {
+    width: 15px;
+}
+
 .tech-stack {
     display: grid;
     gap: 5px;
