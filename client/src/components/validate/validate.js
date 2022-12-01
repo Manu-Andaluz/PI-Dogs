@@ -21,13 +21,13 @@ export default function validate(input) {
     errors.height = 'Height is invalid'
   }
 
-  if (!input.temperaments) {
-    errors.temperaments = "Temperaments is required";
-  } else if (/^[a-zA-Z\s-]*$/.test(input.temperaments)) { // only letters, spaces and dash
-    errors.temperaments = false
-  } else {
-    errors.temperaments = "Invalid Temperaments"
-  }
+  // if (!input.temperaments) {
+  //   errors.temperaments = "Temperaments is required";
+  // } else if (/^[a-zA-Z\s-]*$/.test(input.temperaments)) { // only letters, spaces and dash
+  //   errors.temperaments = false
+  // } else {
+  //   errors.temperaments = "Invalid Temperaments"
+  // }
 
   return errors; // return object errors
 }

@@ -3,15 +3,22 @@ import { useState } from "react";
 import validate from "../validate/validate";
 import "./CreateBreed.css";
 import dogForm from "./images/vertical-dog.jpg";
-import { useDispatch } from "react-redux";
-import { createBreed } from "../../redux/actions/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { createBreed, getTemperaments } from "../../redux/actions/actions";
+import { useEffect } from "react";
 
 export default function CreateBreed() {
   const dispatch = useDispatch();
 
-  const [input, setInput] = useState({});
+  useEffect(() => {
+    dispatch(getTemperaments());
+  }, []);
 
+  const [input, setInput] = useState({});
   const [error, setError] = useState({});
+
+  const state = useSelector((state) => state.temperaments);
+  const [temperaments, setTemperaments] = useState([]);
 
   const handleChange = (e) => {
     setInput({
@@ -33,12 +40,24 @@ export default function CreateBreed() {
       // validate inputs
       alert("Invalid values");
     } else {
+      input.temperaments = temperaments.join(" ");
       dispatch(createBreed(input)); // breed created
       alert("Breed Created !!");
       Array.from(document.querySelectorAll("input")).forEach(
         (input) => (input.value = "")
       ); // clean the inputs
+      setTemperaments([]);
     }
+  };
+
+  const hanldeTemperaments = (e) => {
+    e.preventDefault();
+    setTemperaments([...temperaments, e.target.value]);
+  };
+
+  const removeTemperament = (e) => {
+    e.preventDefault();
+    setTemperaments(temperaments.filter((value) => value !== e.target.value));
   };
 
   return (
@@ -114,15 +133,29 @@ export default function CreateBreed() {
             />
           </div>
 
-          <input
-            type="text"
-            placeholder="Temperaments ..."
-            name="temperaments"
-            value={input.value}
-            onChange={handleChange}
-            required
-          />
-          <p className="danger">{error.temperaments}</p>
+          <div className="temperaments-container">
+            <select onChange={hanldeTemperaments}>
+              <option>Temperaments</option>
+              {state.map((e, i) => (
+                <option value={e.name} key={i}>
+                  {e.name}
+                </option>
+              ))}
+            </select>
+
+            {temperaments.length > 0 &&
+              temperaments.map((e, i) => (
+                <option
+                  className="temperaments-values"
+                  value={e}
+                  onClick={removeTemperament}
+                  key={i}
+                >
+                  {e} x
+                </option>
+              ))}
+          </div>
+
           <input
             type="text"
             placeholder="Origin ..."

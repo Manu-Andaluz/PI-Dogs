@@ -57,12 +57,6 @@ export default function SearchForm() {
           <option value={e.name}>{e.name}</option>
         ))}
       </select>
-
-      {/* <input
-        type="text"
-        placeholder="Sort by Temperaments ..."
-        onChange={hanldeTemperaments}
-      /> */}
     </form>
   );
 }

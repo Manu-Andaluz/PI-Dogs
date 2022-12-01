@@ -39,6 +39,28 @@
     justify-content: space-between;
 }
 
+.temperaments-container {
+    display: flex;
+    margin: 0 auto;
+    gap: 1rem;
+    width: 100%;
+    align-items: center;
+}
+
+.temperaments-container input {
+    width: 80%;
+}
+
+.temperaments-container select {
+    border: 1px solid #cecece;
+    border-radius: 16px;
+    padding: 10px 0;
+}
+
+.temperaments-values {
+    font-size: 14px;
+}
+
 .danger {
     display: grid;
     place-content: center;
