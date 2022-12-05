@@ -24,7 +24,7 @@ export default function Breeds() {
   const allBreeds = useSelector((state) => state.breed);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [numberBreeds, setNumberBreeds] = useState(8);
+  const [numberBreeds, setNumberBreeds] = useState(15);
 
   const indexOfLastBreed = numberBreeds * currentPage; // 1 * 8 = 8
   const indexOfFirstBreed = indexOfLastBreed - numberBreeds; //  8 - 8 = 0
@@ -66,7 +66,7 @@ export default function Breeds() {
               paginated={handlePage}
               currentPage={currentPage}
             />
-            {currentPage !== 22 && breeds.length >= 8 && (
+            {currentPage !== 12 && breeds.length >= 15 && (
               <button className="paginated-btn" onClick={handleNextPage}>
                 →
               </button>
@@ -101,7 +101,7 @@ export default function Breeds() {
               paginated={handlePage}
               currentPage={currentPage}
             />
-            {currentPage !== 22 && breeds.length >= 8 && (
+            {currentPage !== 12 && breeds.length >= 15 && (
               <button className="paginated-btn" onClick={handleNextPage}>
                 →
               </button>
