@@ -65,16 +65,18 @@ export default function CreateBreed() {
       <div className="create-breed-container">
         <img src={dogForm} className="dog-img " alt="nose" />
         <form className="create-breed-form" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Name ..."
-            name="name"
-            value={input.value} // input.name = input.value
-            onChange={handleChange}
-            required
-          />
-          <p className="danger">{error.name}</p>
-          <div className="flex">
+          <div className="validate-inputs">
+            <input
+              type="text"
+              placeholder="Name ..."
+              name="name"
+              value={input.value} // input.name = input.value
+              onChange={handleChange}
+              required
+            />
+            <p className="danger">{error.name}</p>
+          </div>
+          <div className="validate-inputs">
             <input
               type="number"
               placeholder="Min Weight ..."
@@ -84,6 +86,7 @@ export default function CreateBreed() {
               required
             />
             <p>-</p>
+            <p className="danger">{error.weight}</p>
             <input
               type="number"
               placeholder="Max Weight ..."
@@ -93,8 +96,7 @@ export default function CreateBreed() {
               required
             />
           </div>
-          <p className="danger">{error.weight}</p>
-          <div className="flex">
+          <div className="validate-inputs">
             <input
               type="number"
               placeholder="Min Height ..."
@@ -112,10 +114,10 @@ export default function CreateBreed() {
               onChange={handleChange}
               required
             />
+            <p className="danger">{error.height && error.height}</p>
           </div>
-          <p className="danger">{error.height && error.height}</p>
 
-          <div className="flex">
+          <div className="validate-inputs">
             <input
               type="number"
               placeholder="Min Years Of Life ..."
