@@ -4,34 +4,24 @@ import github from "./images/github.svg";
 
 export default function AboutUs() {
   return (
-    <div className="about-us-container">
-      <div className="github">
-        <a href="https://github.com/Manu-Andaluz/PI-Dogs">
-          Github Repo <img src={github} alt="github" />
+    <div className="container-aboutus">
+      <div className="card">
+        <div className="card-details">
+          <p className="text-title">PI Dogs</p>
+          <p className="text-body">
+            Tech Stack: Node.js, PostgreSQL, Express,
+            <br /> React Router, React Redux{" "}
+          </p>
+        </div>
+        <a
+          href="https://github.com/Manu-Andaluz/PI-Dogs"
+          className="card-button"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Repository
         </a>
       </div>
-      <h4>Tech Stack: </h4>
-      <ul className="tech-stack">
-        <li>React Router</li>
-        <li>React Redux</li>
-        <li>Node.js</li>
-        <li>PostgreSQL</li>
-        <li>JavaScript</li>
-        <li>CSS</li>
-        <li>HTML</li>
-      </ul>
-      <p className="project-summary">
-        <span>Project Summary:</span>
-        <br />
-        In this project you can see all the dog breeds brought from an api,
-        create your own dog breed or delete it. The form to create a breed has
-        different validations to prevent the user from entering invalid
-        information
-        <br />
-        Also you can see all the races in /home, if you click on one, you will
-        see the details of that race and you can delete it
-      </p>
-      <p>© 2022 copyright all right reserved</p>
     </div>
   );
 }
