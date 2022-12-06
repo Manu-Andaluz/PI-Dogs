@@ -1,6 +1,5 @@
 import React from "react";
 import "./AboutUs.css";
-import github from "./images/github.svg";
 
 export default function AboutUs() {
   return (
