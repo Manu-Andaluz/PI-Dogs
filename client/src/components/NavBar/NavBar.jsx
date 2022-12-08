@@ -42,6 +42,7 @@ export default function NavBar() {
           <NavLink
             to="/home"
             style={({ isActive }) => (isActive ? activeStyle : undefined)}
+            onClick={hanldeClick}
           >
             Home
           </NavLink>
@@ -50,6 +51,7 @@ export default function NavBar() {
           <NavLink
             to="/createBread"
             style={({ isActive }) => (isActive ? activeStyle : undefined)}
+            onClick={hanldeClick}
           >
             Create Breed
           </NavLink>
@@ -58,6 +60,7 @@ export default function NavBar() {
           <NavLink
             to="/aboutUs"
             style={({ isActive }) => (isActive ? activeStyle : undefined)}
+            onClick={hanldeClick}
           >
             About Us
           </NavLink>

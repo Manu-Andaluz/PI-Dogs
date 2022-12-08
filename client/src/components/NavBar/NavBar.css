@@ -58,6 +58,7 @@ a {
     }
 
     .nav-active {
+        z-index: 100;
         position: absolute;
         top: 10vh;
         display: grid;
