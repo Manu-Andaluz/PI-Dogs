@@ -167,7 +167,7 @@ export default function CreateBreed() {
           />
           <input
             type="text"
-            placeholder="Image ..."
+            placeholder="Image URL ..."
             name="image"
             value={input.value}
             onChange={handleChange}
