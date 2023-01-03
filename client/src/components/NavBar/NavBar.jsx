@@ -13,7 +13,7 @@ export default function NavBar() {
 
   return (
     <header>
-      <h3>LOGO</h3>
+      <h3>DogsPi</h3>
       <nav ref={navRef}>
         <NavLink to="/home">Home</NavLink>
         <NavLink to="/createBread">Create Breed</NavLink>

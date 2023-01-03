@@ -42,10 +42,12 @@
 .card-temperaments {
     display: flex;
     font-size: 13px;
+    color: black;
 }
 
 .card-content p {
     font: 13px;
+    color: black;
 }
 
 @media (max-width: 860px) {

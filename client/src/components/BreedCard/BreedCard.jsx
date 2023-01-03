@@ -3,7 +3,12 @@ import { Link } from "react-router-dom";
 import "./BreedCard.css";
 export default function BreedCard({ name, image, temperaments, weight, id }) {
   return (
-    <Link className="container-card" to={`/breedDetails/${id}`} key={id}>
+    <Link
+      className="container-card"
+      to={`/breedDetails/${id}`}
+      key={id}
+      style={{ textDecoration: "none" }}
+    >
       <img src={image} alt="breed dog" />
       <div className="card-content">
         <h4>{name}</h4>
