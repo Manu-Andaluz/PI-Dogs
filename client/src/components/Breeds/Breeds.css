@@ -43,19 +43,12 @@
 }
 
 .paginated-btn {
-    border-radius: 1rem;
     border: none;
-    background-color: #3a3aac;
-    color: white;
-    font-size: 1rem;
-    padding: 1px 7px;
+    color: #5959e2;
+    font-size: 1.5em;
     cursor: pointer;
-    transition: all .2s linear;
 }
 
-.paginated-btn:hover {
-    background-color: #5959e2;
-}
 
 @media (max-width: 860px) {
     .container-grid {

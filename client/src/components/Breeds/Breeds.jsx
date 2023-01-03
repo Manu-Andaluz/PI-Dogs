@@ -56,9 +56,9 @@ export default function Breeds() {
 
           <div className="flex-nav-paginated">
             {currentPage !== 1 && (
-              <button className="paginated-btn" onClick={handlePrevPage}>
-                ←
-              </button>
+              <a className="paginated-btn" onClick={handlePrevPage}>
+                <i class="fa-solid fa-circle-left"></i>
+              </a>
             )}
             <Paginated
               breeds={allBreeds.length}
@@ -67,9 +67,9 @@ export default function Breeds() {
               currentPage={currentPage}
             />
             {currentPage !== 12 && breeds.length >= 15 && (
-              <button className="paginated-btn" onClick={handleNextPage}>
-                →
-              </button>
+              <a className="paginated-btn" onClick={handleNextPage}>
+                <i class="fa-solid fa-circle-chevron-right"></i>
+              </a>
             )}
           </div>
 
