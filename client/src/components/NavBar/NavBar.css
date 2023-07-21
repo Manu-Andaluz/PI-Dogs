@@ -15,6 +15,11 @@ header {
     color: var(--textColor);
 }
 
+header a {
+    text-decoration: none;
+    color: var(--textColor);
+}
+
 nav a {
     margin: 0 1rem;
     color: var(--textColor);
